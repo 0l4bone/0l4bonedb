@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  0l4bmy:
+    image: mysql:5.7
+    environment:
+      - MYSQL_DATABASE=0l4bone
+      - MYSQL_ROOT_PASSWORD=0l4bP4ssw0rd.
+      - MYSQL_ROOT_HOST=%
+    volumes:
+      - ./mysql:/var/lib/mysql
+    expose:
+      - 3306
+    ports:
+      - 3306:3306
+
+  0l4bdb:
+    image: 0l4bdb
+    volumes:
+      - ./code/:/var/www/html
+    expose:
+      - 80
+    ports:
+      - 92:80
+    links:
+      - 0l4bmy
+
